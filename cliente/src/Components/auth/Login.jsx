@@ -22,9 +22,9 @@ const Login = () => {
 
   const onSubmit = e =>{
     e.preventDefault();
-      // validar que no haya cambios vavios
+      // validar que no haya cambios vacios
 
-      //
+      //psarlo en el action
   }
   return ( 
 

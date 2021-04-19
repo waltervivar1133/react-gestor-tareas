@@ -3,6 +3,9 @@ import NuevoProyecto from '../proyectos/NuevoProyecto'
 import ListadoProyecto from '../proyectos/ListadoProyecto'
 
 const Sidebar = () => {
+
+
+
   return ( 
     
     <aside>

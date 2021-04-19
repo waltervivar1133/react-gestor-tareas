@@ -13,9 +13,11 @@ const ListadoProyecto = () => {
  
 useEffect(  () =>{
   obtenerProyectos();
-}, [])
+},[])
+
+
   // revisar si proyecto tiene contenido 
- if(proyectos.length===0) return null;
+ if(proyectos.length === 0) return <h3>No hay proyectos, comienza creando uno</h3>;
 
   return (
 
