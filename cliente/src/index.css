@@ -78,6 +78,10 @@ a {
   display: block;
   width: 100%;
 }
+.btn-eliminar {
+  background-color: rgba(223, 5, 5, 0.897);
+  color: white;
+}
 .btn-submit:hover {
   background-color: var(--gris2);
 }
