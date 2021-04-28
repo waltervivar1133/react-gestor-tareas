@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import proyectoContext from '../../Context/proyectos/proyectoContext';
 import tareaContext from '../../Context/tareas/tareaContext';
 
@@ -9,7 +9,17 @@ const FormTarea = () => {
   const { proyecto } = proyectosContext;
 
   const tareasContext = useContext(tareaContext);
-  const { errorTarea ,agregarTarea, validarTarea, obtenerTareas } = tareasContext;
+  const { tareaSeleccionada, errorTarea ,agregarTarea, validarTarea, obtenerTareas ,actualizarTarea ,limpiarTarea} = tareasContext;
+  
+  useEffect(() => {
+      if(tareaSeleccionada !== null) {
+        setTarea(tareaSeleccionada)
+      }else {
+        setTarea({
+          nombre : ''
+        })
+      }
+  }, [tareaSeleccionada])
 
 
   const [tarea, setTarea] = useState({
@@ -46,11 +56,16 @@ const FormTarea = () => {
       return;
     }
 
+    if(tareaSeleccionada === null) {
+      //agregar la nueva tarea del state de tareas
+      tarea.proyectoId = proyectoActual.id;
+      tarea.estado = false;
+      agregarTarea(tarea)
 
-    //agregar la nueva tarea del state de tareas
-    tarea.proyectoId = proyectoActual.id;
-    tarea.estado = false;
-    agregarTarea(tarea)
+    }else {
+      actualizarTarea(tarea);
+      limpiarTarea()
+    }
 
 
     // obtener y filtrar taras del proyecto actual
@@ -80,7 +95,7 @@ const FormTarea = () => {
         <div className="contenedor-input">
           <input type="submit"
           className="btn btn-primario btn-submit btn-block"
-          value="Agregar Tarea"
+          value={ tareaSeleccionada ? 'Editar Tarea' : 'Agregar Tarea'}
           />
         </div>
       </form>

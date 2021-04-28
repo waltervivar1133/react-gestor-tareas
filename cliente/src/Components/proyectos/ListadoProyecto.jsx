@@ -14,6 +14,8 @@ const ListadoProyecto = () => {
  
 useEffect(  () =>{
   obtenerProyectos();
+
+  // eslint-disable-next-line
 },[])
 
 

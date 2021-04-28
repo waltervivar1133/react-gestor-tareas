@@ -77,6 +77,8 @@ const ProyectoState = props =>{
           payload : proyectoId
         })
       }
+
+  
     return (
 
       <proyectoContext.Provider
@@ -90,7 +92,8 @@ const ProyectoState = props =>{
           agregarProyecto, 
           mostrarError,
           proyectoActual,
-          eliminarProyecto
+          eliminarProyecto,
+
        
         }}
       >
