@@ -320,7 +320,8 @@ aside  {
 .campo-form input[type="password"],
 .campo-form input[type="email"], 
 .campo-form input[type="text"] {
-  border: 1px solid #e1e1e1;
+  border: 1px solid var(--gris2);
+  border-radius: 0.5em;
   padding: 1rem;
   flex: 1;
 }
