@@ -1,10 +1,10 @@
-import React , {useContext, useState} from 'react';
+import React , {useContext, useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import AlertaContext from '../../Context/alertas/alertaContext';
 import AuthContext from '../../Context/autenticacion/authContext';
 
 
-const Login = () => {
+const Login = (props) => {
 
 
   //extraer los valores del context
@@ -15,6 +15,19 @@ const Login = () => {
 
   const authContext = useContext(AuthContext);
   const {iniciarSesion, mensaje, autenticado} = authContext;
+
+
+  // en caso de que el password o usuario no exista
+  useEffect(() => {
+
+     if(autenticado) {
+       props.history.push('/proyectos')
+     }
+
+    if( mensaje ){
+      mostrarAlerta( mensaje.msg , mensaje.categoria)
+    }
+  }, [mensaje, autenticado, props.history ])
   //state para iniciar sesion
 
   const [usuario , guardarUsuario] = useState({
@@ -35,7 +48,7 @@ const Login = () => {
     e.preventDefault();
       // validar que no haya cambios vacios
       if(email.trim() === '' || password.trim() === '') {
-        mostrarAlerta('Todos los campos son obligatorios', 'alerta-error')
+        return  mostrarAlerta('Todos los campos son obligatorios', 'alerta-error')
       }
       //psarlo en el action
 

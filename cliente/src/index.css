@@ -183,6 +183,10 @@ aside  {
   width: 100%;
 }
 
+.cerrar-sesion {
+  color: var(--blanco);
+}
+
 /** TAREAS LISTADO **/
 .contenedor-tareas {
   padding: 4rem;
