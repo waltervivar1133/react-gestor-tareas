@@ -27,7 +27,7 @@ const AlertaState = props => {
         type: OCULTAR_ALERTA
       })
  
-    }, 5000);
+    }, 10000);
   }
   return (
     <alertaContext.Provider
