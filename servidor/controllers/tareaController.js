@@ -36,7 +36,7 @@ exports.crearTarea = async (req,res) => {
 exports.obtenerTareas = async (req,res) => {
   try {
       //extraer el proyecto y comprobar si existe
-      const { proyecto } = req.body;
+      const { proyecto } = req.query;
       const existeProyecto = await Proyecto.findById(proyecto)
       if(!existeProyecto) {
         return res.status(400).json({ msg: 'Proyecto no encontrado'});
@@ -83,12 +83,9 @@ exports.actualizarTarea = async ( req, res) => {
 
   const nuevaTarea = {};
 
-  if(nombre){
     nuevaTarea.nombre = nombre;
-  }
-  if( estado){
     nuevaTarea.estado = estado;
-  }
+  
 
   // guardar la tarea
 
@@ -107,7 +104,7 @@ exports.eliminarTarea = async (req,res) => {
   try {
 
     //extraer el proyecto y comprobar si existe
-    const { proyecto} = req.body;
+    const { proyecto} = req.query;
     
     // si la  tarea existe
 
