@@ -4,11 +4,6 @@ import AlertaContext from '../../Context/alertas/alertaContext';
 import AuthContext from '../../Context/autenticacion/authContext'; 
 const NuevaCuenta = (props) => {
 
-  const userDatos = {
-    nombre : 'Walter',
-    correo : 'walter@correo.com',
-    
-  }
   //extraer los valores del context
 
     const alertaContext = useContext(AlertaContext);
@@ -30,6 +25,9 @@ const NuevaCuenta = (props) => {
       if( mensaje ){
         mostrarAlerta( mensaje.msg , mensaje.categoria)
       }
+
+    
+      // eslint-disable-next-line
     }, [mensaje, autenticado, props.history ])
   //state para iniciar sesion
   

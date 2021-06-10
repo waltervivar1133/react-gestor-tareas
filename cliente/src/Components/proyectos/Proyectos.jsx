@@ -17,6 +17,7 @@ const Proyectos = () => {
       
         usuarioAutenticado();
         
+    // eslint-disable-next-line
     }, [])
 
   return (

@@ -3,7 +3,7 @@ import TareasContext from './tareaContext'
 import TareaReducer from './tareaReducer'
 import clienteAxios from '../../config/axios';
 
-import { ACTUALIZAR_TAREA, AGREGAR_TAREA, ELIMINAR_TAREA, ESTADO_TAREA, LIMPIAR_TAREA, TAREAS_PROYECTO , TAREA_ACTUAL, VALIDAR_TAREA } from '../../Types'
+import { ACTUALIZAR_TAREA, AGREGAR_TAREA, ELIMINAR_TAREA, LIMPIAR_TAREA, TAREAS_PROYECTO , TAREA_ACTUAL, VALIDAR_TAREA } from '../../Types'
 
 const TareaState = props => {
 
@@ -30,7 +30,7 @@ const TareaState = props => {
     try {
 
       const resultado = await clienteAxios.get('/api/tareas', { params : { proyecto }})
-      console.log(resultado);
+     
     dispatch({
 
       type : TAREAS_PROYECTO,
@@ -45,7 +45,8 @@ const TareaState = props => {
   const agregarTarea = async tarea => {
 
    try {
-      const resultado = await clienteAxios.post('/api/tareas', tarea)
+     
+      await clienteAxios.post('/api/tareas', tarea)
      
     dispatch({
 

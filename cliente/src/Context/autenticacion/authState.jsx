@@ -26,7 +26,6 @@ const AuthState = props => {
     try {
       const respuesta = await clienteAxios.post('/api/usuarios', datos);
       
-      console.log(respuesta.data);
       dispatch({
         type: REGISTRO_EXITOSO,
         payload : respuesta.data

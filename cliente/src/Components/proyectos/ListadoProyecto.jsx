@@ -14,7 +14,6 @@ const ListadoProyecto = () => {
  const alertaContext = useContext(AlertaContext);
  const { alerta, mostrarAlerta} = alertaContext;
  
- console.log(mensaje);
 useEffect(  () =>{
   
   if(mensaje){
