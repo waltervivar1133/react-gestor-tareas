@@ -4,12 +4,12 @@ import proyectoContext from '../../Context/proyectos/proyectoContext';
 import tareaContext from '../../Context/tareas/tareaContext';
 
 const Tarea = ({tarea}) => {
-console.log(tarea);
+
   const proyectosContext = useContext(proyectoContext);
   const { proyecto } = proyectosContext;
 
   const tareasContext = useContext(tareaContext);
-  const { eliminarTarea , obtenerTareas, cambiarEstadoTarea , guardarTareaActual} = tareasContext;
+  const { eliminarTarea , obtenerTareas, actualizarTarea , guardarTareaActual} = tareasContext;
 
   const [ proyectoActual ] = proyecto;
 
@@ -17,8 +17,8 @@ console.log(tarea);
   // funcion cuando da click a eliminar 
 
   const tareaEliminar = id => {
-    eliminarTarea(id);
-    obtenerTareas(proyectoActual.id);
+    eliminarTarea(id, proyectoActual._id);
+    obtenerTareas(proyectoActual._id);
   }
 
   // cambiar estado
@@ -30,7 +30,7 @@ console.log(tarea);
     }else {
       tarea.estado = true;
     }
-    cambiarEstadoTarea(tarea);
+    actualizarTarea(tarea);
   }
 
   // agregar tarea actual para poder editarla
@@ -38,6 +38,8 @@ console.log(tarea);
   const seleccionarTarea = (tarea) => {
     guardarTareaActual(tarea)
   }
+
+  if(!tarea) return <p>Cargando...</p>
   return ( 
 
     <li className="tarea sombra">
@@ -69,7 +71,7 @@ console.log(tarea);
           </button>
           <button type="button"
           className="btn btn-danger"
-          onClick={() => tareaEliminar(tarea.id)}>
+          onClick={() => tareaEliminar(tarea._id)}>
             eliminar
           </button>
       </div>
